@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+news-image{
+  width: 120px;
+  height: 100px;
+  max-width: 120px;
+  max-height: 100px;
+}
