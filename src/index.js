@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
@@ -10,14 +11,15 @@ import {
 import News from './components/News';
 
 let list_items = [
-  'business','entertainment','health','science','sports','technology'
+  'Business','Entertainment','Health','Science','Sports','Technology'
 ]
+
 
 function categoryGenerator(){
   let childs = []
   const genObj = {
     path: '/',
-    element: <News key={"general"} category={"general"}/>
+    element: <News key={"general"} category={"General"}/>
   }
   childs.push(genObj);
   list_items.forEach((elem) => {

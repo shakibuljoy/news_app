@@ -1,21 +1,32 @@
 
 import './App.css';
-
-import React, { Component } from 'react'
+import LoadingBar from 'react-top-loading-bar';
+import { MyContext } from './MyContext';
+import React, { useState } from 'react'
 import Navbar from './components/Navbar';
 import { Outlet } from 'react-router-dom';
-export default class App extends Component {
 
-  static defaultProps = {
-    list_items: null
-  }
-  category = 'science'
-  render() {
-    return (
+export default function App(props) {
+  const [progress, setProgress] = useState(30);
+  return (
       <>
-      <Navbar list_items={this.props.list_items} />
-      <Outlet />
+      <LoadingBar
+        color='#f11946'
+        height={3}
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
+      <Navbar list_items={props.list_items} />
+      <MyContext.Provider value={{setProgress: setProgress}}>
+        <Outlet/>
+      </MyContext.Provider>
       </>
-    )
-  }
+  )
 }
+
+App.defaultProps = {
+  list_items: null,
+  category: 'Science'
+}
+
+
